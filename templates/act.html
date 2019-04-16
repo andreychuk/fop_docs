@@ -1,8 +1,150 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <style type="text/css">
+        html {
+            padding: 0; margin: 0; transform: scale(1);
+        }
+        body {
+            padding: 0; margin: 0; transform: scale(1);
+            font-family: arial,sans-serif;
+            font-size: 18px;
+            line-height: 23px;
+            color: #000000;
+        }
+        table {
+            width: 100%; border-spacing: 0; border: 0; border-collapse: collapse;
+        }
+        td {
+            text-align: left; vertical-align: top; border: 0; padding: 10px;
+        }
+        td:first-child {padding-left: 0;}
+        td:last-child {padding-right: 0;}
+        p {
+            margin: 0; padding: 4px;
+        }
+        .act-table-1 {
+            width: 100%;
+        }
+        .act-table-1 td {
+            width: 50%;
+        }
+        .act-table-1 .sign {width: 60%; height: 50px; margin: 0 0 15px 0; border-bottom: 1px solid #000000;}
+        .act-table-2 {
+            margin: 25px 0 25px 0; border-bottom: 2px solid #000000; font-weight: bold; font-size: 25px; line-height: 32px;
+        }
+        .act-table-3 {
+            border-top: 1px solid #000000; border-right: 1px solid #000000;
+            font-size: 14px;
+        }
+        .act-table-3 td:first-child {padding-left: 10px;}
+        .act-table-3 td:last-child {padding-right: 10px;}
+        .act-table-3 thead td {
+            border-left: 1px solid #000000; border-bottom: 1px solid #000000; background: #d0d0d0;
+            text-align: center; font-weight: bold;
+            padding-top: 4px; padding-bottom: 4px;
+        }
+        .act-table-3 tbody td {
+            border-left: 1px solid #000000; border-bottom: 1px solid #000000;
+            padding-top: 4px; padding-bottom: 4px;
+        }
+        .act-table-3 tbody td.r {text-align: right;}
+        .act-table-3 tbody td.c {text-align: center;}
+        .act-table-3 tbody tr.sum td {
+            border-top: 2px solid #000000; border-bottom: 0; border-left: 0; text-align: right;
+        }
+        .act-table-3 tbody tr.sum td.text {
+            font-weight: bold;
+        }
+        .act-table-3 tbody tr.sum td.num {
+            border-left: 1px solid #000000; border-bottom: 2px solid #000000;
+        }
+        .act-table-4 {
+            margin: 25px 0 25px 0; border-bottom: 2px solid #000000;
+        }
+        .act-table-5 {
+            font-size: 14px;
+        }
+        .act-table-5 td {width: 50%;}
+        .act-table-5 p {padding: 10px 0 10px 0;}
+        .act-table-5 .sign {width: 80%; height: 50px; margin: 0 0 10px 0; border-bottom: 1px solid #000000;}
+        .act-table-5 .title {font-size: 16px; font-weight: bold;}
+    </style>
 </head>
 <body>
-    <p>Всього: {{.StrJobsAmount}} </p>
+<table class="act-table-1">
+    <tr>
+        <td>
+            <p>ЗАТВЕРДЖУЮ</p>
+            <p>{{.Provider.Name}}</p>
+            <div class="sign">&nbsp;</div>
+            <p>{{.Provider.Person}}</p>
+        </td>
+        <td>
+            <p>ЗАТВЕРДЖУЮ</p>
+            <p>{{.Recipient.Name}}</p>
+            <div class="sign">&nbsp;</div>
+            <p>{{.Recipient.Person}}</p>
+        </td>
+    </tr>
+</table>
+<table class="act-table-2"><tr><td>
+    <p>Акт надання послуг</p>
+    <p>№ {{.Act}} від {{.SignOnUA}}</p>
+</td></tr></table>
+<table><tr><td>
+    <p>Ми, що нижче підписалися, представник Замовника {{.Recipient.Name}}, з одного боку, і представник Виконавця {{.Provider.Name}}, з іншого боку, склали цей акт про те, що Виконавцем були виконані наступні роботи (надані такі послуги):</p>
+</td></tr></table>
+<table class="act-table-3">
+    <thead><tr>
+        <td>№</td>
+        <td>Товари (роботи, послуги)</td>
+        <td>К-ть</td>
+        <td>Ціна</td>
+        <td>Сума</td>
+    </tr></thead>
+    <tbody>
+    {{ range $index, $element := .Jobs }}
+    <tr>
+        <td class="r">{{$element.Id}}</td>
+        <td>{{$element.Job}}</td>
+        <td class="c">{{$element.Quantity}}</td>
+        <td class="r">{{$element.Price}}</td>
+        <td class="r">{{$element.Amount}}</td>
+    </tr>
+    {{ end }}
+    <tr class="sum">
+        <td class="text" colspan="4">Разом:</td>
+        <td class="num">{{.JobsAmount}}</td>
+    </tr>
+    </tbody>
+</table>
+<table class="act-table-4"><tr><td>
+    <p>Загальна вартість робіт (послуг) склала {{.StrJobsAmount}}.</p>
+    <p>Замовник претензій по обʼєму, якості та строкам виконання робіт (надання послуг) не має.</p>
+</td></tr></table>
+<table class="act-table-5"><tr>
+    <td>
+        <strong class="title">Від виконавця*</strong>
+        <div class="sign"></div>
+        <p>* Відповідальний за здійснення  господарської операції і правильність її оформлення</p>
+        <p><strong>{{.SignOn.Format "2.01.2006"}}</strong></p>
+        <p>{{.Provider.Name}},</p>
+        <p>
+            код за ДРФО {{.Provider.DRFO}},<br />
+            Р/р {{.Provider.RR}}  в {{.Provider.Bank}}  МФО {{.Provider.MFO}}
+        </p>
+    </td>
+    <td>
+        <strong class="title">Від замовника</strong>
+        <div class="sign"></div>
+        <p><strong>{{.SignOn.Format "2.01.2006"}}</strong></p>
+        <p>{{.Recipient.Name}},</p>
+        <p>
+            код за ДРФО {{.Recipient.DRFO}},<br />
+            Р/р {{.Recipient.RR}}  в {{.Recipient.Bank}}  МФО {{.Recipient.MFO}}
+        </p>
+    </td>
+</tr></table>
 </body>
 </html>
