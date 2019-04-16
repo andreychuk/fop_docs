@@ -12,6 +12,12 @@ var (
 	signOn   = kingpin.Flag("signOn", "SignOn date").String()
 )
 
+func init() {
+	if _, err := os.Stat("./reports"); os.IsNotExist(err) {
+		os.Mkdir("./reports", os.ModeDir)
+	}
+}
+
 func main() {
 	kingpin.Parse()
 
