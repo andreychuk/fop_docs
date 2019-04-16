@@ -2,6 +2,7 @@ package main
 
 import (
 	"gopkg.in/alecthomas/kingpin.v2"
+	"log"
 	"os"
 	"strconv"
 	"time"
@@ -36,4 +37,5 @@ func main() {
 
 	CreatePDF(actHTML, actName)
 	CreatePDF(billHTML, billName)
+	log.Println("Done!!!")
 }
