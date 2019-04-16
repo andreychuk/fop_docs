@@ -3,12 +3,10 @@ package main
 import (
 	"github.com/SebastiaanKlippert/go-wkhtmltopdf"
 	"log"
-	"strconv"
 	"strings"
-	"time"
 )
 
-func CreateActPDF(data Data, input string) {
+func CreatePDF(input, fileName string) {
 	pdfg, err := wkhtmltopdf.NewPDFGenerator()
 	if err != nil {
 		log.Fatal(err)
@@ -23,7 +21,6 @@ func CreateActPDF(data Data, input string) {
 		log.Fatal(err)
 	}
 
-	fileName := "./Act #" + strconv.Itoa(data.Act) + " " + data.SignOn.Format(time.RFC822) + ".pdf"
 	err = pdfg.WriteFile(fileName)
 	if err != nil {
 		log.Fatal(err)
