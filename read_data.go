@@ -21,6 +21,7 @@ func (data *Data) prepareData() {
 	for i, jobs := range data.Jobs {
 		amount := jobs.Price * jobs.Quantity
 		data.Jobs[i].Amount = amount
+		data.Jobs[i].Id = i + 1
 		data.JobsAmount += amount
 	}
 	data.StrJobsAmount = num2word.UaAmount(data.JobsAmount, false)

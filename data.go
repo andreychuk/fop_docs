@@ -16,6 +16,7 @@ type (
 		Quantity float64 `json:"quantity"`
 		Price    float64 `json:"price"`
 		Amount   float64 `json:"amount"`
+		Id       int     `json:"id"`
 	}
 
 	Data struct {
