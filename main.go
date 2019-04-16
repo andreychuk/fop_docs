@@ -30,7 +30,7 @@ func main() {
 
 	path := "./reports/" + data.SignOn.Format("2006-01-02")
 	if _, err := os.Stat(path); os.IsNotExist(err) {
-		os.Mkdir(path, os.ModeDir)
+		os.Mkdir(path, os.ModePerm)
 	}
 	actName := path + "/Act #" + strconv.Itoa(data.Act) + " " + data.SignOn.Format(time.RFC822) + ".pdf"
 	billName := path + "/Bill #" + strconv.Itoa(data.Act) + " " + data.SignOn.Format(time.RFC822) + ".pdf"

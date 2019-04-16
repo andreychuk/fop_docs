@@ -26,5 +26,6 @@ type (
 		Act           int        `json:"act"`
 		StrJobsAmount string     `json:"str_jobs_amount"`
 		SignOn        time.Time  `json:"sign_on"`
+		SignOnUA      string     `json:"sign_on_ua"`
 	}
 )

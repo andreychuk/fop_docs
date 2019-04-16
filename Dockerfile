@@ -1,4 +1,4 @@
-FROM andreychuk/go-wkhtmltopdf
+FROM andreychuk/go-wkhtmltopdf:v0.1.0
 
 WORKDIR /src
 
