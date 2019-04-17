@@ -112,14 +112,14 @@
     <tr>
         <td class="r">{{$element.Id}}</td>
         <td>{{$element.Job}}</td>
-        <td class="c">{{$element.Quantity}}</td>
-        <td class="r">{{$element.Price}}</td>
-        <td class="r">{{$element.Amount}}</td>
+        <td class="c">{{printf "%.2f" $element.Quantity}}</td>
+        <td class="r">{{printf "%.2f" $element.Price}}</td>
+        <td class="r">{{printf "%.2f" $element.Amount}}</td>
     </tr>
     {{ end }}
     <tr class="sum">
         <td class="text" colspan="4">Разом:</td>
-        <td class="num">{{.JobsAmount}}</td>
+        <td class="num">{{printf "%.2f" .JobsAmount}}</td>
     </tr>
     </tbody>
 </table>
