@@ -12,7 +12,7 @@ func CreatePDF(input, fileName string) {
 		log.Fatal(err)
 	}
 
-	pdfg.Dpi.Set(600)
+	pdfg.Dpi.Set(75)
 	pdfg.PageSize.Set(wkhtmltopdf.PageSizeA4)
 
 	pdfg.AddPage(wkhtmltopdf.NewPageReader(strings.NewReader(input)))
