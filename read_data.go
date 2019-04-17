@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"github.com/andreychuk/num2word"
 	"io/ioutil"
+	"log"
 	"strconv"
 	"time"
 )
@@ -11,7 +12,10 @@ import (
 func GetData(path string) (data Data) {
 	file, _ := ioutil.ReadFile(path)
 
-	_ = json.Unmarshal([]byte(file), &data)
+	err := json.Unmarshal([]byte(file), &data)
+	if err != nil {
+		log.Fatalln(err)
+	}
 	data.prepareData()
 
 	return data
