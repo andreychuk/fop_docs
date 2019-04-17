@@ -32,6 +32,9 @@ func (data *Data) prepareData() {
 		data.JobsAmount += amount
 	}
 	data.StrJobsAmount = num2word.UaAmount(data.JobsAmount, false)
+	if data.Act == "" {
+		data.Act = time.Now().Format("2006-01-02-15-04")
+	}
 }
 
 func (data *Data) setSignOn(str string) {

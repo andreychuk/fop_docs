@@ -24,7 +24,7 @@ type (
 		Recipient     FOP        `json:"recipient"`
 		Jobs          []JobItems `json:"jobs"`
 		JobsAmount    float64    `json:"jobs_amount"`
-		Act           int        `json:"act"`
+		Act           string     `json:"act"`
 		StrJobsAmount string     `json:"str_jobs_amount"`
 		SignOn        time.Time  `json:"sign_on"`
 		SignOnUA      string     `json:"sign_on_ua"`

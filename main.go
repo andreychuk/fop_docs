@@ -4,7 +4,6 @@ import (
 	"gopkg.in/alecthomas/kingpin.v2"
 	"log"
 	"os"
-	"strconv"
 	"time"
 )
 
@@ -31,8 +30,8 @@ func main() {
 	if _, err := os.Stat(path); os.IsNotExist(err) {
 		os.Mkdir(path, os.ModePerm)
 	}
-	actName := path + "/Act #" + strconv.Itoa(data.Act) + " " + data.SignOn.Format(time.RFC822) + ".pdf"
-	billName := path + "/Bill #" + strconv.Itoa(data.Act) + " " + data.SignOn.Format(time.RFC822) + ".pdf"
+	actName := path + "/Act #" + data.Act + " " + data.SignOn.Format(time.RFC822) + ".pdf"
+	billName := path + "/Bill #" + data.Act + " " + data.SignOn.Format(time.RFC822) + ".pdf"
 
 	CreatePDF(actHTML, actName)
 	CreatePDF(billHTML, billName)
