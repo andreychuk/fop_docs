@@ -10,9 +10,12 @@ import (
 )
 
 func GetData(path string) (data Data) {
-	file, _ := ioutil.ReadFile(path)
+	file, err := ioutil.ReadFile(path)
+	if err != nil {
+		log.Fatalln(err)
+	}
 
-	err := json.Unmarshal([]byte(file), &data)
+	err = json.Unmarshal([]byte(file), &data)
 	if err != nil {
 		log.Fatalln(err)
 	}
