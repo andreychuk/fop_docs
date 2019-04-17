@@ -9,8 +9,7 @@ import (
 )
 
 var (
-	dataFile = kingpin.Flag("data", "JSON data file").Required().String()
-	signOn   = kingpin.Flag("signOn", "SignOn date").String()
+	signOn = kingpin.Flag("signOn", "SignOn date").String()
 )
 
 func init() {
@@ -22,7 +21,7 @@ func init() {
 func main() {
 	kingpin.Parse()
 
-	data := GetData(*dataFile)
+	data := GetData("data.json")
 	data.setSignOn(*signOn)
 
 	actHTML := CreateActHTML(data)
