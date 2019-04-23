@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// CreatePDF
+// CreatePDF create PDF form HTML template
 func CreatePDF(input, fileName string) {
 	pdfg, err := wkhtmltopdf.NewPDFGenerator()
 	if err != nil {

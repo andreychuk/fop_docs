@@ -4,7 +4,7 @@ import "time"
 
 type (
 
-	// FOP
+	// FOP structure
 	FOP struct {
 		Name   string `json:"name"`
 		DRFO   string `json:"drfo"`
@@ -14,7 +14,7 @@ type (
 		Person string `json:"person"`
 	}
 
-	// JobItems
+	// JobItems structure
 	JobItems struct {
 		Job      string  `json:"job"`
 		Quantity float64 `json:"quantity"`
@@ -23,7 +23,7 @@ type (
 		Id       int     `json:"id"`
 	}
 
-	// Data
+	// Data structure
 	Data struct {
 		Provider      FOP        `json:"provider"`
 		Recipient     FOP        `json:"recipient"`
