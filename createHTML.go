@@ -6,6 +6,7 @@ import (
 	"log"
 )
 
+// CreateActHTML
 func CreateActHTML(data Data) string {
 	t, err := template.ParseFiles("templates/act.html")
 	if err != nil {
@@ -20,6 +21,7 @@ func CreateActHTML(data Data) string {
 	return str
 }
 
+// CreateBillHTML
 func CreateBillHTML(data Data) string {
 	t, err := template.ParseFiles("templates/bill.html")
 	if err != nil {

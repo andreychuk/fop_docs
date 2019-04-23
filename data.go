@@ -3,6 +3,8 @@ package main
 import "time"
 
 type (
+
+	// FOP
 	FOP struct {
 		Name   string `json:"name"`
 		DRFO   string `json:"drfo"`
@@ -11,6 +13,8 @@ type (
 		MFO    string `json:"mfo"`
 		Person string `json:"person"`
 	}
+
+	// JobItems
 	JobItems struct {
 		Job      string  `json:"job"`
 		Quantity float64 `json:"quantity"`
@@ -19,6 +23,7 @@ type (
 		Id       int     `json:"id"`
 	}
 
+	// Data
 	Data struct {
 		Provider      FOP        `json:"provider"`
 		Recipient     FOP        `json:"recipient"`

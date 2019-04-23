@@ -9,6 +9,7 @@ import (
 	"time"
 )
 
+// GetData
 func GetData(path string) (data Data) {
 	file, err := ioutil.ReadFile(path)
 	if err != nil {

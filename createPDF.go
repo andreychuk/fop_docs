@@ -6,6 +6,7 @@ import (
 	"strings"
 )
 
+// CreatePDF
 func CreatePDF(input, fileName string) {
 	pdfg, err := wkhtmltopdf.NewPDFGenerator()
 	if err != nil {
